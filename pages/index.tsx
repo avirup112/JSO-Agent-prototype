@@ -22,6 +22,7 @@ type HistoryItem = {
 
 export default function Home() {
   const router = useRouter()
+  const [checking, setChecking] = useState(true)
   const [status, setStatus] = useState<Status>('idle')
   const [result, setResult] = useState<PrepPack | null>(null)
   const [meta, setMeta] = useState<FormData | null>(null)
@@ -44,25 +45,31 @@ export default function Home() {
   }, [])
 
   const checkUser = async () => {
-    const { data: { session } } = await supabase.auth.getSession()
-    if (!session) {
+    try {
+      const { data: { session } } = await supabase.auth.getSession()
+      if (!session) {
+        router.push('/login')
+        return
+      }
+
+      const { data: profile } = await supabase
+        .from('profiles')
+        .select('username')
+        .eq('id', session.user.id)
+        .single()
+
+      if (!profile) {
+        router.push('/login')
+        return
+      }
+
+      setUsername(profile.username)
+      await fetchHistory(session.user.id)
+    } catch (err) {
       router.push('/login')
-      return
+    } finally {
+      setChecking(false)
     }
-
-    const { data: profile } = await supabase
-      .from('profiles')
-      .select('username')
-      .eq('id', session.user.id)
-      .single()
-
-    if (!profile) {
-      router.push('/login')
-      return
-    }
-
-    setUsername(profile.username)
-    fetchHistory(session.user.id)
   }
 
   const fetchHistory = async (userId: string) => {
@@ -114,7 +121,6 @@ export default function Home() {
       setResult(json.data)
       setStatus('done')
 
-      // Fetch the just-saved pack to get its id
       const { data: savedPack } = await supabase
         .from('prep_packs')
         .select('id, checked_items')
@@ -165,6 +171,15 @@ export default function Home() {
     setStep(0)
     setCurrentPackId(null)
     setSavedChecks([])
+  }
+
+  // Show spinner while checking auth
+  if (checking) {
+    return (
+      <div className={styles.checkingWrap}>
+        <div className={styles.spinnerLg} />
+      </div>
+    )
   }
 
   return (
