@@ -62,33 +62,9 @@ Get your key at: https://console.groq.com
 npm run dev
 ```
 
-Open http://localhost:3000
+Open https://jso-agent-prototype-dvueogjna-avirups-projects-5359bcfb.vercel.app/
 
 ---
-
-## Deploy to Vercel
-
-### Option A — Vercel CLI (recommended)
-
-```bash
-npm install -g vercel
-vercel
-```
-
-When prompted, set the environment variable:
-- `GROQ_API_KEY` = your Groq API key
-
-### Option B — Vercel Dashboard
-
-1. Push this project to a GitHub repository
-2. Go to https://vercel.com/new
-3. Import your GitHub repository
-4. Under **Environment Variables**, add:
-   - Key: `GROQ_API_KEY`
-   - Value: your Groq API key
-5. Click **Deploy**
-
-Vercel will detect Next.js and configure the build automatically.
 
 ---
 
@@ -145,6 +121,3 @@ jso-prep-agent/
 
 ---
 
-## License
-
-MIT © [Your Name]
