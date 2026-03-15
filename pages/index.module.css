@@ -211,3 +211,95 @@
   text-decoration: underline;
   text-underline-offset: 2px;
 }
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.userEmail {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: 'DM Mono', monospace;
+}
+
+.signOutBtn {
+  font-size: 12px;
+  color: var(--text-secondary);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 5px 10px;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.signOutBtn:hover { background: var(--surface-2); }
+
+.historyBtn {
+  font-size: 12px;
+  color: var(--text-secondary);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 5px 10px;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.historyBtn:hover { background: var(--surface-2); }
+
+.historyPanel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.historyTitle {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.historyItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  transition: background 0.1s;
+  width: 100%;
+}
+
+.historyItem:hover { background: var(--bg); }
+
+.historyRole {
+  font-size: 13px;
+  color: var(--text-primary);
+}
+
+.historyDate {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-family: 'DM Mono', monospace;
+}
+
+.savedBadge {
+  font-size: 11px;
+  color: var(--green-text);
+  background: var(--green-bg);
+  padding: 2px 8px;
+  border-radius: 99px;
+  font-family: 'DM Mono', monospace;
+}

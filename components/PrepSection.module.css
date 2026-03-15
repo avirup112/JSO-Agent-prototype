@@ -131,3 +131,12 @@
   text-decoration: line-through;
   color: var(--text-muted);
 }
+
+.allDone {
+  padding: 10px 16px;
+  font-size: 12px;
+  color: var(--green-text);
+  background: var(--green-bg);
+  text-align: center;
+  font-weight: 500;
+}
